@@ -1,7 +1,5 @@
 package br.com.easyhorta;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tb_telefone")
@@ -75,4 +70,19 @@ public class Telefone {
         this.telefone = telefone;
     }
     
+    public Produtor getProdutor() {
+        return this.produtor;
+    }
+
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
+    }
+    
+    public Cliente getCliente() {
+        return this.cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
