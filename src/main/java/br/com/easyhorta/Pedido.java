@@ -1,7 +1,6 @@
 package br.com.easyhorta;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,7 @@ public class Pedido {
     //Relacionamento com Produtor
     @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private List<Produtor> produtores;
+    private Produtor produtor;
 
     //Relacionamento com Cliente
     @ManyToOne
@@ -108,12 +107,11 @@ public class Pedido {
         this.cliente = cliente;
     }
     
-    public List<Produtor> getProdutores() {
-        return this.produtores;
+    public Produtor getProdutor() {
+        return this.produtor;
     }
 
-    public void setProdutores(List<Produtor> produtores) {
-        this.produtores = produtores;
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
     }
-
 }

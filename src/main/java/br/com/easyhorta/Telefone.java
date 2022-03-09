@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,11 +29,11 @@ public class Telefone {
     private Integer telefone;
 
     //Relacionamentos
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "id_cliente")
     private List<Cliente> clientes;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "id_produtor")
     private List<Produtor> produtores;
 

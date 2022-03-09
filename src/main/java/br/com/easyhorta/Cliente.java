@@ -30,14 +30,14 @@ public class Cliente {
     private String cpf;
 
     //Mapeamento bidirecional com Endereco
-    @OneToOne(mappedBy = "id_endereco")
+    @OneToOne(mappedBy = "cliente")
     private Endereco endereco;
 
-    @OneToOne(mappedBy = "id_email")
+    @OneToOne(mappedBy = "cliente")
     private Email email;
 
-    @OneToMany(mappedBy = "id_telefone")
-    private Telefone telefone;
+    //@OneToMany(mappedBy = "id_telefone")
+    //private Telefone telefone;
 
     //Relacionamento
     @OneToMany
@@ -103,11 +103,4 @@ public class Cliente {
         this.pedidos = pedidos;
     }
 
-    public Telefone getTelefone() {
-        return this.telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
 }

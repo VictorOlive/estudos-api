@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,14 +28,11 @@ public class Produtor {
     private String nome;
 
     //Mapeamento bidirecional com Endereco
-    @OneToOne(mappedBy = "id_endereco")
+    @OneToOne(mappedBy = "produtor")
     private Endereco endereco;
 
-    @OneToOne(mappedBy = "id_produtor")
+    @OneToOne(mappedBy = "produtor")
     private Email email;
-
-    @OneToMany(mappedBy = "id_produtor")
-    private Servico servico;
 
     //Relacionamento dos produtos
     @ManyToMany
@@ -92,14 +88,6 @@ public class Produtor {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
-    }
-
-    public Servico getServico() {
-        return this.servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
     }
     
 }
