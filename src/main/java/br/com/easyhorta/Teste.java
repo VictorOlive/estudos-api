@@ -12,6 +12,7 @@ public class Teste {
             em = Persistence.createEntityManagerFactory("easyhorta").createEntityManager();
 
 			Cliente victor = new Cliente("Victor", "12345678910");
+			
 
             em.getTransaction().begin();
 			em.persist(victor);

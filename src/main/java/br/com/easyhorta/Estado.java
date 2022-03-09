@@ -16,34 +16,34 @@ public class Estado {
     @SequenceGenerator(name = "estado", sequenceName = "sq_tb_estado", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado")
     @Column(name = "id_estado")
-    private Integer idEstado;
+    private Integer id;
 
     @Column(name = "nm_estado", length = 30)
-    private String nmEstado;
+    private String nome;
 
     // --- Constructor
     /**
-     * @param nmEstado
+     * @param nome
      */
-    public Estado(String nmEstado) {
-        this.nmEstado = nmEstado;
+    public Estado(String nome) {
+        this.nome = nome;
     }
 
     // --- Getters & Setters
-    public Integer getIdEstado() {
-        return this.idEstado;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmEstado() {
-        return this.nmEstado;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmEstado(String nmEstado) {
-        this.nmEstado = nmEstado;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     

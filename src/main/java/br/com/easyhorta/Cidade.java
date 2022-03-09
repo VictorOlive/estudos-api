@@ -1,5 +1,7 @@
 package br.com.easyhorta;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,47 +20,46 @@ public class Cidade {
     @SequenceGenerator(name = "cidade", sequenceName = "sq_tb_cidade", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade")
     @Column(name = "id_cidade")
-    private Integer idCidade;
+    private Integer id;
 
     @Column(name = "nm_cidade")
-    private String nmCidade;
+    private String nome;
 
     //Relacionamentos
     @ManyToOne
     @JoinColumn(name = "id_estado")
-    private Estado idEstado;
+    private List<Estado> estados;
 
     // --- Constructor
     /**
-     * @param nmCidade
+     * @param nome
      */
-    public Cidade(String nmCidade) {
-        this.nmCidade = nmCidade;
+    public Cidade(String nome) {
+        this.nome = nome;
     }
 
     // --- Getters & Setters
-    public Integer getIdCidade() {
-        return this.idCidade;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdCidade(Integer idCidade) {
-        this.idCidade = idCidade;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmCidade() {
-        return this.nmCidade;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmCidade(String nmCidade) {
-        this.nmCidade = nmCidade;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Estado getIdEstado() {
-        return this.idEstado;
+    public List<Estado> getEstados() {
+        return this.estados;
     }
 
-    public void setIdEstado(Estado idEstado) {
-        this.idEstado = idEstado;
+    public void setEstados(List<Estado> estados) {
+        this.estados = estados;
     }
-
 }

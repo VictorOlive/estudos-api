@@ -1,5 +1,7 @@
 package br.com.easyhorta;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,83 +21,83 @@ public class Endereco {
     @SequenceGenerator(name = "endereco", sequenceName = "sq_tb_endereco" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     @Column(name = "id_endereco")
-    private Integer idEndereco;
+    private Integer id;
 
     @Column(name = "nr_endereco")
-    private Integer nrEndereco;
+    private Integer numero;
 
     @Column(name = "ds_complemento", length = 100)
-    private Integer ds_complemento;
+    private Integer descricao;
 
     //Relacionamentos
     @OneToOne
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private Cliente cliente;
 
     @OneToOne
     @JoinColumn(name = "id_produtor")
-    private Produtor idProdutor;
+    private Produtor produtor;
 
     @ManyToOne
     @JoinColumn(name = "id_bairro")
-    private Bairro idBairro;
+    private List<Bairro> bairros;
 
     // --- Constructor
     /**
-     * @param nrEndereco
-     * @param ds_complemento
+     * @param numero
+     * @param descricao
      */
-    public Endereco(Integer nrEndereco, Integer ds_complemento) {
-        this.nrEndereco = nrEndereco;
-        this.ds_complemento = ds_complemento;
+    public Endereco(Integer numero, Integer descricao) {
+        this.numero = numero;
+        this.descricao = descricao;
     }
     
     // --- Getters & Setters
-    public Integer getIdEndereco() {
-        return this.idEndereco;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdEndereco(Integer idEndereco) {
-        this.idEndereco = idEndereco;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getNrEndereco() {
-        return this.nrEndereco;
+    public Integer getNumero() {
+        return this.numero;
     }
 
-    public void setNrEndereco(Integer nrEndereco) {
-        this.nrEndereco = nrEndereco;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
-    public Integer getDs_complemento() {
-        return this.ds_complemento;
+    public Integer getDescricao() {
+        return this.descricao;
     }
 
-    public void setDs_complemento(Integer ds_complemento) {
-        this.ds_complemento = ds_complemento;
+    public void setDescricao(Integer descricao) {
+        this.descricao = descricao;
     }
 
-    public Cliente getIdCliente() {
-        return this.idCliente;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Bairro getIdBairro() {
-        return this.idBairro;
+    public List<Bairro> getBairros() {
+        return this.bairros;
     }
 
-    public void setIdBairro(Bairro idBairro) {
-        this.idBairro = idBairro;
+    public void setBairros(List<Bairro> bairros) {
+        this.bairros = bairros;
     }
 
-    public Produtor getIdProdutor() {
-        return this.idProdutor;
+    public Produtor getProdutor() {
+        return this.produtor;
     }
 
-    public void setIdProdutor(Produtor idProdutor) {
-        this.idProdutor = idProdutor;
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
     }
 }

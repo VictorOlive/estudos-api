@@ -21,20 +21,23 @@ public class Cliente {
     @SequenceGenerator(name = "cliente", sequenceName = "sq_tb_cliente" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente")
     @Column(name = "id_cliente")
-    private Integer idCliente;
+    private Integer id;
 
     @Column(name = "nm_cliente", length = 70, nullable = false)
-    private String nmCliente;
+    private String nome;
 
     @Column(name = "nr_cpf", length = 11)
-    private String nrCpf;
+    private String cpf;
 
     //Mapeamento bidirecional com Endereco
-    @OneToOne(mappedBy = "idCliente")
+    @OneToOne(mappedBy = "id_endereco")
     private Endereco endereco;
 
-    @OneToOne(mappedBy = "idCliente")
+    @OneToOne(mappedBy = "id_email")
     private Email email;
+
+    @OneToMany(mappedBy = "id_telefone")
+    private Telefone telefone;
 
     //Relacionamento
     @OneToMany
@@ -43,37 +46,37 @@ public class Cliente {
     
     // --- Constructor
     /**
-     * @param nmCliente
-     * @param nrCpf
+     * @param nome
+     * @param cpf
      */
-    public Cliente(String nmCliente, String nrCpf) {
-        this.nmCliente = nmCliente;
-        this.nrCpf = nrCpf;
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
     }
 
     // --- Getters & Setters
-    public Integer getIdCliente() {
-        return this.idCliente;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmCliente() {
-        return this.nmCliente;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmCliente(String nmCliente) {
-        this.nmCliente = nmCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getNrCpf() {
-        return this.nrCpf;
+    public String getCpf() {
+        return this.cpf;
     }
 
-    public void setNrCpf(String nrCpf) {
-        this.nrCpf = nrCpf;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Endereco getEndereco() {
@@ -98,5 +101,13 @@ public class Cliente {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    public Telefone getTelefone() {
+        return this.telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
     }
 }

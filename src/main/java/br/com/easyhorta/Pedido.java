@@ -1,6 +1,7 @@
 package br.com.easyhorta;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,24 +21,24 @@ public class Pedido {
     @SequenceGenerator(name = "pedido", sequenceName = "sq_tb_pedido" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pedido")
     @Column(name = "id_pedido")
-    private Integer idPedido;
+    private Integer id;
 
     @Column(name = "vl_pedido")
-    private Float vlPedido;
+    private Float valor;
 
     @Column(name = "qt_pedido")
-    private Integer qtPedido;
+    private Integer quantidade;
 
     @Column(name = "dt_hr_pedido")
-    private LocalDateTime dtHrPedido = LocalDateTime.now();
+    private LocalDateTime dataHora = LocalDateTime.now();
 
     @Column(name = "ds_pedido")
-    private String dsPedido;
+    private String descricao;
 
     //Relacionamento com Produtor
     @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private Produtor idProdutor;
+    private List<Produtor> produtores;
 
     //Relacionamento com Cliente
     @ManyToOne
@@ -46,57 +47,57 @@ public class Pedido {
 
     // --- Constructor
     /**
-     * @param vlPedido
-     * @param qtPedido
-     * @param dtHrPedido
-     * @param dsPedido
+     * @param valor
+     * @param quantidade
+     * @param dataHora
+     * @param descricao
      */
-    public Pedido(Float vlPedido, Integer qtPedido, String dsPedido, Cliente cliente) {
-        this.vlPedido = vlPedido;
-        this.qtPedido = qtPedido;
-        this.dsPedido = dsPedido;
+    public Pedido(Float valor, Integer quantidade, String descricao, Cliente cliente) {
+        this.valor = valor;
+        this.quantidade = quantidade;
+        this.descricao = descricao;
         this.cliente = cliente;
     }
     
     // --- Getters & Setters
-    public Integer getIdPedido() {
-        return this.idPedido;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Float getVlPedido() {
-        return this.vlPedido;
+    public Float getValor() {
+        return this.valor;
     }
 
-    public void setVlPedido(Float vlPedido) {
-        this.vlPedido = vlPedido;
+    public void setValor(Float valor) {
+        this.valor = valor;
     }
 
-    public Integer getQtPedido() {
-        return this.qtPedido;
+    public Integer getQuantidade() {
+        return this.quantidade;
     }
 
-    public void setQtPedido(Integer qtPedido) {
-        this.qtPedido = qtPedido;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public LocalDateTime getDtHrPedido() {
-        return this.dtHrPedido;
+    public LocalDateTime getDataHora() {
+        return this.dataHora;
     }
 
-    public void setDtHrPedido(LocalDateTime dtHrPedido) {
-        this.dtHrPedido = dtHrPedido;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
-    public String getDsPedido() {
-        return this.dsPedido;
+    public String getDescricao() {
+        return this.descricao;
     }
 
-    public void setDsPedido(String dsPedido) {
-        this.dsPedido = dsPedido;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Cliente getCliente() {
@@ -105,6 +106,14 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public List<Produtor> getProdutores() {
+        return this.produtores;
+    }
+
+    public void setProdutores(List<Produtor> produtores) {
+        this.produtores = produtores;
     }
 
 }

@@ -1,5 +1,7 @@
 package br.com.easyhorta;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,47 +20,46 @@ public class Bairro {
     @SequenceGenerator(name = "bairro", sequenceName = "sq_tb_bairro" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bairro")
     @Column(name = "id_bairro")
-    private Integer idBairro;
+    private Integer id;
 
     @Column(name = "nm_bairro", length = 30)
-    private String nmBairro;
+    private String nome;
 
     //Relacionamentos
     @ManyToOne
     @JoinColumn(name = "id_cidade")
-    private Cidade idCidade;
+    private List<Cidade> cidades;
 
     // --- Constructor
     /**
-     * @param nmBairro
+     * @param nome
      */
-    public Bairro(String nmBairro) {
-        this.nmBairro = nmBairro;
+    public Bairro(String nome) {
+        this.nome = nome;
     }
 
     // --- Getters & Setters
-    public Integer getIdBairro() {
-        return this.idBairro;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdBairro(Integer idBairro) {
-        this.idBairro = idBairro;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmBairro() {
-        return this.nmBairro;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmBairro(String nmBairro) {
-        this.nmBairro = nmBairro;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Cidade getIdCidade() {
-        return this.idCidade;
+    public List<Cidade> getCidades() {
+        return this.cidades;
     }
 
-    public void setIdCidade(Cidade idCidade) {
-        this.idCidade = idCidade;
+    public void setCidades(List<Cidade> cidades) {
+        this.cidades = cidades;
     }
-    
 }

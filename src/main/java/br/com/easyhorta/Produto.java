@@ -19,10 +19,10 @@ public class Produto {
     @SequenceGenerator(name = "produto", sequenceName = "sq_tb_produto", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto")
     @Column(name = "id_produto")
-    private Integer idProduto;
+    private Integer id;
 
     @Column(name = "nm_produto")
-    private String nmProduto;
+    private String nome;
 
     //Mapeamento bidirecional
     @ManyToMany(mappedBy = "produtos")
@@ -30,27 +30,27 @@ public class Produto {
 
     // --- Constructor
     /**
-     * @param nmProduto
+     * @param nome
      */
-    public Produto(String nmProduto) {
-        this.nmProduto = nmProduto;
+    public Produto(String nome) {
+        this.nome = nome;
     }
     
     // --- Getters & Setters
-    public Integer getIdProduto() {
-        return this.idProduto;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdProduto(Integer idProduto) {
-        this.idProduto = idProduto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmProduto() {
-        return this.nmProduto;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmProduto(String nmProduto) {
-        this.nmProduto = nmProduto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
     public List<Produtor> getProdutores() {

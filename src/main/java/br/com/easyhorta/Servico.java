@@ -1,6 +1,7 @@
 package br.com.easyhorta;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,86 +22,85 @@ public class Servico {
     @SequenceGenerator(name = "servico", sequenceName = "sq_tb_servico", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "servico")
     @Column(name = "id_servico")
-    private Integer idServico;
+    private Integer id;
 
     @Column(name = "nm_servico", length = 100)
-    private String nmServico;
+    private String nome;
 
     @Column(name = "ds_servico", length = 1000)
-    private String dsServico;
+    private String descricao;
 
     @Column(name = "dt_hr_servico")
-    private LocalDate dtHrServico;
+    private LocalDate dataHora;
 
     @Column(name = "vl_servico")
-    private Float vlServico;
+    private Float valor;
 
     //Relacionamentos
     @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private Produtor idProdutor;
+    private List<Produtor> produtores;
 
     // --- Constructor
     /**
-     * @param nmServico
-     * @param dsServico
-     * @param dtHrServico
-     * @param vlServico
+     * @param nome
+     * @param descricao
+     * @param dataHora
+     * @param valor
      */
-    public Servico(String nmServico, String dsServico, LocalDate dtHrServico, Float vlServico) {
-        this.nmServico = nmServico;
-        this.dsServico = dsServico;
-        this.dtHrServico = dtHrServico;
-        this.vlServico = vlServico;
+    public Servico(String nome, String descricao, LocalDate dataHora, Float valor) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.dataHora = dataHora;
+        this.valor = valor;
     }
     
     // --- Getters & Setters    
-    public Integer getIdServico() {
-        return this.idServico;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdServico(Integer idServico) {
-        this.idServico = idServico;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNmServico() {
-        return this.nmServico;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNmServico(String nmServico) {
-        this.nmServico = nmServico;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDsServico() {
-        return this.dsServico;
+    public String getDescricao() {
+        return this.descricao;
     }
 
-    public void setDsServico(String dsServico) {
-        this.dsServico = dsServico;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public LocalDate getDtHrServico() {
-        return this.dtHrServico;
+    public LocalDate getDataHora() {
+        return this.dataHora;
     }
 
-    public void setDtHrServico(LocalDate dtHrServico) {
-        this.dtHrServico = dtHrServico;
+    public void setDataHora(LocalDate dataHora) {
+        this.dataHora = dataHora;
     }
 
-    public Float getVlServico() {
-        return this.vlServico;
+    public Float getValor() {
+        return this.valor;
     }
 
-    public void setVlServico(Float vlServico) {
-        this.vlServico = vlServico;
-    }
-
-    public Produtor getIdProdutor() {
-        return this.idProdutor;
-    }
-
-    public void setIdProdutor(Produtor idProdutor) {
-        this.idProdutor = idProdutor;
+    public void setValor(Float valor) {
+        this.valor = valor;
     }
     
+    public List<Produtor> getProdutores() {
+        return this.produtores;
+    }
+
+    public void setProdutores(List<Produtor> produtores) {
+        this.produtores = produtores;
+    }
 }

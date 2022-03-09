@@ -1,5 +1,7 @@
 package br.com.easyhorta;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,71 +20,71 @@ public class Telefone {
     @SequenceGenerator(name = "telefone", sequenceName = "sq_tb_telefone", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "telefone")
     @Column(name = "id_telefone")
-    private Integer idTelefone;
+    private Integer id;
 
     @Column(name = "nr_ddd")
-    private Integer nrDdd;
+    private Integer ddd;
 
     @Column(name = "nr_telefone")
-    private Integer nr_telefone;
+    private Integer telefone;
 
     //Relacionamentos
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private List<Cliente> clientes;
 
     @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private Produtor idProdutor;
+    private List<Produtor> produtores;
 
     // --- Constructor
     /**
-     * @param nrDdd
-     * @param nr_telefone
+     * @param ddd
+     * @param telefone
      */
-    public Telefone(Integer nrDdd, Integer nr_telefone) {
-        this.nrDdd = nrDdd;
-        this.nr_telefone = nr_telefone;
+    public Telefone(Integer ddd, Integer telefone) {
+        this.ddd = ddd;
+        this.telefone = telefone;
     }
 
     // --- Getters & Setters
-    public Integer getIdTelefone() {
-        return this.idTelefone;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdTelefone(Integer idTelefone) {
-        this.idTelefone = idTelefone;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Integer getNrDdd() {
-        return this.nrDdd;
+    public Integer getDdd() {
+        return this.ddd;
     }
 
-    public void setNrDdd(Integer nrDdd) {
-        this.nrDdd = nrDdd;
+    public void setDdd(Integer ddd) {
+        this.ddd = ddd;
     }
 
-    public Integer getNr_telefone() {
-        return this.nr_telefone;
+    public Integer getTelefone() {
+        return this.telefone;
     }
 
-    public void setNr_telefone(Integer nr_telefone) {
-        this.nr_telefone = nr_telefone;
+    public void setTelefone(Integer telefone) {
+        this.telefone = telefone;
     }
     
-    public Cliente getIdCliente() {
-        return this.idCliente;
+    public List<Cliente> getClientes() {
+        return this.clientes;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
-    }
-    
-        public Produtor getIdProdutor() {
-        return this.idProdutor;
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
-    public void setIdProdutor(Produtor idProdutor) {
-        this.idProdutor = idProdutor;
+    public List<Produtor> getProdutores() {
+        return this.produtores;
+    }
+
+    public void setProdutores(List<Produtor> produtores) {
+        this.produtores = produtores;
     }
 }

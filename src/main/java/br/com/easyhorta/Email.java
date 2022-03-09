@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -19,58 +18,58 @@ public class Email {
     @SequenceGenerator(name = "email", sequenceName = "sq_tb_email", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "email")
     @Column(name = "id_email")
-    private Integer idEmail;
+    private Integer id;
 
     @Column(name = "ds_email")
-    private String dsEmail;
+    private String email;
 
     //Relacionamentos 
     @OneToOne
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private Cliente cliente;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_produtor")
-    private Produtor idProdutor;
+    private Produtor produtor;
 
     // --- Constructor
     /**
-     * @param dsEmail
+     * @param email
      */
-    public Email(String dsEmail) {
-        this.dsEmail = dsEmail;
+    public Email(String email) {
+        this.email = email;
     }
     
     // --- Getters & Setters
-    public Integer getIdEmail() {
-        return this.idEmail;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setIdEmail(Integer idEmail) {
-        this.idEmail = idEmail;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getDsEmail() {
-        return this.dsEmail;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setDsEmail(String dsEmail) {
-        this.dsEmail = dsEmail;
-    }
-    
-    public Cliente getIdCliente() {
-        return this.idCliente;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public Produtor getIdProdutor() {
-        return this.idProdutor;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public void setIdProdutor(Produtor idProdutor) {
-        this.idProdutor = idProdutor;
+    public Produtor getProdutor() {
+        return this.produtor;
+    }
+
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
     }
 }
