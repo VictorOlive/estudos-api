@@ -11,14 +11,14 @@ public class Teste {
         try {
             em = Persistence.createEntityManagerFactory("easyhorta").createEntityManager();
 
-			//Cliente victor = new Cliente("Victor", "12345678910");
+			Cliente victor = new Cliente("Victor", "12345678910");
 			
 
             em.getTransaction().begin();
-			//em.persist(victor);
+			em.persist(victor);
 			
-			//Pedido batata = new Pedido(2.5f, 1, "batata" , victor);
-			//em.persist(batata);
+			Pedido batata = new Pedido(2.5f, 1, "batata" , victor);
+			em.persist(batata);
 
             em.getTransaction().commit();
 
