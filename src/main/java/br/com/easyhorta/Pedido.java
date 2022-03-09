@@ -1,6 +1,7 @@
 package br.com.easyhorta;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Pedido {
     private Integer qtPedido;
 
     @Column(name = "dt_hr_pedido")
-    private LocalDate dtHrPedido;
+    private LocalDateTime dtHrPedido = LocalDateTime.now();
 
     @Column(name = "ds_pedido")
     private String dsPedido;
@@ -50,11 +51,11 @@ public class Pedido {
      * @param dtHrPedido
      * @param dsPedido
      */
-    public Pedido(Float vlPedido, Integer qtPedido, LocalDate dtHrPedido, String dsPedido) {
+    public Pedido(Float vlPedido, Integer qtPedido, String dsPedido, Cliente cliente) {
         this.vlPedido = vlPedido;
         this.qtPedido = qtPedido;
-        this.dtHrPedido = dtHrPedido;
         this.dsPedido = dsPedido;
+        this.cliente = cliente;
     }
     
     // --- Getters & Setters
@@ -82,11 +83,11 @@ public class Pedido {
         this.qtPedido = qtPedido;
     }
 
-    public LocalDate getDtHrPedido() {
+    public LocalDateTime getDtHrPedido() {
         return this.dtHrPedido;
     }
 
-    public void setDtHrPedido(LocalDate dtHrPedido) {
+    public void setDtHrPedido(LocalDateTime dtHrPedido) {
         this.dtHrPedido = dtHrPedido;
     }
 

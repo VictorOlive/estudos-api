@@ -26,8 +26,8 @@ public class Cliente {
     @Column(name = "nm_cliente", length = 70, nullable = false)
     private String nmCliente;
 
-    @Column(name = "nr_cpf", length = 8)
-    private Integer nrCpf;
+    @Column(name = "nr_cpf", length = 11)
+    private String nrCpf;
 
     //Mapeamento bidirecional com Endereco
     @OneToOne(mappedBy = "idCliente")
@@ -46,7 +46,7 @@ public class Cliente {
      * @param nmCliente
      * @param nrCpf
      */
-    public Cliente(String nmCliente, Integer nrCpf) {
+    public Cliente(String nmCliente, String nrCpf) {
         this.nmCliente = nmCliente;
         this.nrCpf = nrCpf;
     }
@@ -68,11 +68,11 @@ public class Cliente {
         this.nmCliente = nmCliente;
     }
 
-    public Integer getNrCpf() {
+    public String getNrCpf() {
         return this.nrCpf;
     }
 
-    public void setNrCpf(Integer nrCpf) {
+    public void setNrCpf(String nrCpf) {
         this.nrCpf = nrCpf;
     }
 
@@ -90,5 +90,13 @@ public class Cliente {
 
     public void setEmail(Email email) {
         this.email = email;
+    }
+
+    public List<Pedido> getPedidos() {
+        return this.pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }
