@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,6 +34,18 @@ public class Produtor {
 
     @OneToOne(mappedBy = "produtor")
     private Email email;
+
+    //BIDIRECIONAL COM PEDIDO
+    @OneToMany(mappedBy = "produtor")
+    private List<Pedido> pedidos;
+    
+    //BIDIRECIONAL COM SERVICO
+    @OneToMany(mappedBy = "produtor")
+    private List<Servico> servicos;
+
+    //BIDIRECIONAL COM TELEFONE
+    @OneToMany(mappedBy = "produtor")
+    private List<Telefone> telefones;
 
     //Relacionamento dos produtos
     @ManyToMany
@@ -90,4 +103,29 @@ public class Produtor {
         this.endereco = endereco;
     }
     
+    public List<Pedido> getPedidos() {
+        return this.pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public List<Servico> getServicos() {
+        return this.servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
+    }
+
+    
+    public List<Telefone> getTelefones() {
+        return this.telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
 }

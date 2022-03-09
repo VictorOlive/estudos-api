@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,6 +22,11 @@ public class Estado {
 
     @Column(name = "nm_estado", length = 30)
     private String nome;
+
+    //Relacionamento com Cidade
+    @ManyToOne
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
 
     // --- Constructor
     /**
@@ -44,6 +51,14 @@ public class Estado {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Cidade getCidade() {
+        return this.cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
     

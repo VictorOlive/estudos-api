@@ -9,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 
 @Entity
@@ -36,10 +39,10 @@ public class Servico {
     @Column(name = "vl_servico")
     private Float valor;
 
-    //Relacionamentos
-    @OneToMany
+    //Relacionamento com produtor
+    @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private List<Produtor> produtores;
+    private Produtor produtor;
 
     // --- Constructor
     /**
@@ -96,11 +99,11 @@ public class Servico {
         this.valor = valor;
     }
     
-    public List<Produtor> getProdutores() {
-        return this.produtores;
+    public Produtor getProdutor() {
+        return this.produtor;
     }
 
-    public void setProdutores(List<Produtor> produtores) {
-        this.produtores = produtores;
+    public void setProdutor(Produtor produtor) {
+        this.produtor = produtor;
     }
 }

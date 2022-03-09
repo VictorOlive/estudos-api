@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -36,12 +35,12 @@ public class Cliente {
     @OneToOne(mappedBy = "cliente")
     private Email email;
 
-    //@OneToMany(mappedBy = "id_telefone")
-    //private Telefone telefone;
+    //BIDIRECIONAL COM TELEFONE
+    @OneToMany(mappedBy = "cliente")
+    private List<Telefone> telefones;
 
-    //Relacionamento
-    @OneToMany
-    @JoinColumn(name = "id_pedido")
+    //Relacionamento com pedidos
+    @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
     
     // --- Constructor
@@ -95,12 +94,13 @@ public class Cliente {
         this.email = email;
     }
 
-    public List<Pedido> getPedidos() {
-        return this.pedidos;
+    
+    public List<Telefone> getTelefones() {
+        return this.telefones;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
 }

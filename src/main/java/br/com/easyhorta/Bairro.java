@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -25,10 +26,15 @@ public class Bairro {
     @Column(name = "nm_bairro", length = 30)
     private String nome;
 
-    //Relacionamentos
-    @OneToMany
-    @JoinColumn(name = "id_cidade")
+
+    //BIDIRECIONAL COM CIDADE
+    @OneToMany(mappedBy = "bairro")
     private List<Cidade> cidades;
+
+    //RELACIONAMENTO COM ENDEREÇO
+    @ManyToOne
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco;
 
     // --- Constructor
     /**
@@ -62,4 +68,13 @@ public class Bairro {
     public void setCidades(List<Cidade> cidades) {
         this.cidades = cidades;
     }
+
+    public Endereco getEndereco() {
+        return this.endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
 }

@@ -38,8 +38,8 @@ public class Endereco {
     @JoinColumn(name = "id_produtor")
     private Produtor produtor;
 
-    @OneToMany
-    @JoinColumn(name = "id_bairro")
+    //BIDIRECIONAL COM BAIRRO
+    @OneToMany(mappedBy = "endereco")
     private List<Bairro> bairros;
 
     // --- Constructor
@@ -85,14 +85,6 @@ public class Endereco {
         this.cliente = cliente;
     }
 
-    public List<Bairro> getBairros() {
-        return this.bairros;
-    }
-
-    public void setBairros(List<Bairro> bairros) {
-        this.bairros = bairros;
-    }
-
     public Produtor getProdutor() {
         return this.produtor;
     }
@@ -100,4 +92,6 @@ public class Endereco {
     public void setProdutor(Produtor produtor) {
         this.produtor = produtor;
     }
+
+
 }

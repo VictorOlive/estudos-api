@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tb_telefone")
@@ -29,13 +32,13 @@ public class Telefone {
     private Integer telefone;
 
     //Relacionamentos
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
-    private List<Cliente> clientes;
+    private Cliente cliente;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_produtor")
-    private List<Produtor> produtores;
+    private Produtor produtor;
 
     // --- Constructor
     /**
@@ -72,19 +75,4 @@ public class Telefone {
         this.telefone = telefone;
     }
     
-    public List<Cliente> getClientes() {
-        return this.clientes;
-    }
-
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public List<Produtor> getProdutores() {
-        return this.produtores;
-    }
-
-    public void setProdutores(List<Produtor> produtores) {
-        this.produtores = produtores;
-    }
 }
