@@ -41,7 +41,7 @@ public class Pedido {
     //Relacionamento com Cliente
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    private Cliente idCliente;
+    private Cliente cliente;
 
     // --- Constructor
     /**
@@ -98,12 +98,12 @@ public class Pedido {
         this.dsPedido = dsPedido;
     }
 
-    public Cliente getIdCliente() {
-        return this.idCliente;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }
