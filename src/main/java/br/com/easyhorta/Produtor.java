@@ -25,15 +25,15 @@ public class Produtor {
     @Column(name = "id_produtor")
     private Integer id;
 
+    @Column(name = "ds_email")
+    private String email;
+
     @Column(name = "nm_Produtor", length = 50)
     private String nome;
 
     //Mapeamento bidirecional com Endereco
     @OneToOne(mappedBy = "produtor")
     private Endereco endereco;
-
-    @OneToOne(mappedBy = "produtor")
-    private Email email;
 
     //BIDIRECIONAL COM PEDIDO
     @OneToMany(mappedBy = "produtor")
@@ -87,14 +87,6 @@ public class Produtor {
         this.produtos = produtos;
     }
 
-    public Email getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
     public Endereco getEndereco() {
         return this.endereco;
     }
@@ -126,6 +118,14 @@ public class Produtor {
 
     public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

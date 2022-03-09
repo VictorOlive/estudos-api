@@ -22,6 +22,9 @@ public class Cliente {
     @Column(name = "id_cliente")
     private Integer id;
 
+    @Column(name = "ds_email")
+    private String email;
+
     @Column(name = "nm_cliente", length = 70, nullable = false)
     private String nome;
 
@@ -31,9 +34,6 @@ public class Cliente {
     //Mapeamento bidirecional com Endereco
     @OneToOne(mappedBy = "cliente")
     private Endereco endereco;
-
-    @OneToOne(mappedBy = "cliente")
-    private Email email;
 
     //BIDIRECIONAL COM TELEFONE
     @OneToMany(mappedBy = "cliente")
@@ -85,15 +85,6 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    public Email getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
     
     public List<Telefone> getTelefones() {
         return this.telefones;
@@ -103,4 +94,11 @@ public class Cliente {
         this.telefones = telefones;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
