@@ -2,6 +2,7 @@ package br.com.easyhorta;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
 public class Cliente {
 
     @Id
-    @SequenceGenerator(name = "cliente", sequenceName = "sq_tb_cliente" , allocationSize = 1)
+    @SequenceGenerator(name = "cliente", sequenceName = "sq_tb_cliente", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente")
     @Column(name = "id_cliente")
     private Integer id;
@@ -31,26 +32,31 @@ public class Cliente {
     @Column(name = "nr_cpf", length = 11)
     private String cpf;
 
-    //Mapeamento bidirecional com Endereco
-    @OneToOne(mappedBy = "cliente")
+    // Mapeamento bidirecional com Endereco
+    @OneToOne(mappedBy = "cliente" )
     private Endereco endereco;
 
-    //BIDIRECIONAL COM TELEFONE
-    @OneToMany(mappedBy = "cliente")
+    // BIDIRECIONAL COM TELEFONE
+    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL})
     private List<Telefone> telefones;
 
-    //Relacionamento com pedidos
+    // Relacionamento com pedidos
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
-    
-    // --- Constructor
-    /**
-     * @param nome
-     * @param cpf
-     */
-    public Cliente(String nome, String cpf) {
+
+
+    public Cliente(Integer id, String email, String nome, String cpf, Endereco endereco, List<Telefone> telefones,
+            List<Pedido> pedidos) {
+        this.id = id;
+        this.email = email;
         this.nome = nome;
         this.cpf = cpf;
+        this.endereco = endereco;
+        this.telefones = telefones;
+        this.pedidos = pedidos;
+    }
+
+    public Cliente() {
     }
 
     // --- Getters & Setters
@@ -85,7 +91,7 @@ public class Cliente {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public List<Telefone> getTelefones() {
         return this.telefones;
     }
@@ -100,5 +106,11 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente [cpf=" + cpf + ", email=" + email + ", endereco=" + endereco + ", id=" + id + ", nome=" + nome
+                + ", telefones=" + telefones + "]";
     }
 }

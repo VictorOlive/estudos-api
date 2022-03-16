@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,22 +27,23 @@ public class Telefone {
 
     //Relacionamentos
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_produtor")
     private Produtor produtor;
 
-    // --- Constructor
-    /**
-     * @param ddd
-     * @param telefone
-     */
-    public Telefone(Integer ddd, Integer telefone) {
+
+
+    public Telefone(Integer id, Integer ddd, Integer telefone, Cliente cliente, Produtor produtor) {
+        this.id = id;
         this.ddd = ddd;
         this.telefone = telefone;
+        this.cliente = cliente;
+        this.produtor = produtor;
     }
+
+    public Telefone() {}
+
 
     // --- Getters & Setters
     public Integer getId() {
@@ -84,5 +84,11 @@ public class Telefone {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Telefone [ ddd=" + ddd + ", id=" + id + ", telefone="
+                + telefone + "]";
     }
 }
